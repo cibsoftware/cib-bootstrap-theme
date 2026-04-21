@@ -1,6 +1,6 @@
 {
   "name": "@cib/bootstrap-theme",
-  "version": "1.0.0-dev.5",
+  "version": "1.0.0",
   "description": "Centralized Bootstrap theme for CIB company frontend projects.",
   "main": "dist/index.css",
   "style": "dist/index.css",
