@@ -1,6 +1,6 @@
 #!groovy
 
-@Library('cib-pipeline-library@npm-allow-republish') _
+@Library('cib-pipeline-library@master') _
 
 import de.cib.pipeline.library.Constants
 import de.cib.pipeline.library.ConstantsInternal
