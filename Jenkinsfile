@@ -7,6 +7,13 @@ import de.cib.pipeline.library.ConstantsInternal
 
 standardNPMPipeline(
     primaryBranch: 'main',
+
+    // Auto enable unit test and SAST
+    uiParamPresets: [
+        'UNIT_TESTS': true,
+        'SAST': true
+    ],
+
     // Publish configuration
     npmAllowRepublish: false,
     npmCredentialsId: Constants.CIBSEVEN_NPM_CREDENTIALS_ID,
