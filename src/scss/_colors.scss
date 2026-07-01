@@ -26,3 +26,10 @@ $dark:          #0F2133 !default;
 $white:         #FFF !default;
 $blue-highlight: #4395FF !default;
 $petrol:        #069AAD !default; // used for signature
+
+// Extra brand accent colors that aren't part of Bootstrap's $theme-colors map,
+// exposed as custom properties instead of generating a full utility class set.
+:root {
+  --bs-blue-highlight: #{$blue-highlight};
+  --bs-petrol: #{$petrol};
+}
