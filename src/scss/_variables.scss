@@ -38,7 +38,6 @@ $gray-650: #8092A6 !default;
 $gray-700: #617891 !default;
 $gray-800: #4D6278 !default;
 $gray-900: #0F2133 !default;
-
 $dropdown-divider-bg: $gray-600 !default;
 $input-focus-border-color: $gray-900 !default;
 $input-focus-box-shadow: none !default;
@@ -46,7 +45,7 @@ $input-color: $gray-900 !default;
 $input-disabled-bg: $gray-300 !default;
 $input-border-color: $gray-650 !default;
 $input-placeholder-color: $gray-700 !default;
-$input-group-addon-bg: #ffffff !default;
+$input-group-addon-bg: #fff !default;
 $border-radius: .25rem !default;
 $form-check-border-radius: $border-radius !default;
 $input-bg: $white !default;
@@ -68,8 +67,8 @@ $table-head-color: $gray-900 !default;
 $popover-header-bg: $white !default;
 $nav-tabs-link-active-color: $gray-900 !default;
 $list-group-action-color: $gray-900 !default;
-$pagination-border-color: rgba(0, 0, 0, 0) !default;
-$pagination-disabled-border-color: rgba(0, 0, 0, 0) !default;
+$pagination-border-color: rgb(0, 0, 0, 0) !default;
+$pagination-disabled-border-color: rgb(0, 0, 0, 0) !default;
 $form-select-disabled-color: $gray-900 !default;
 $form-select-disabled-bg: $gray-300 !default;
 $yellow: #f8a81b !default;
@@ -102,14 +101,14 @@ $toast-border-color: $gray-400 !default;
 $toast-border-radius: 0.3rem !default;
 $toast-header-color: rgb(15, 33, 51) !default;
 $toast-header-background-color: rgba($success, .30) !default;
-$toast-header-border-color: rgba(0, 0, 0, 0) !default;
-$dropdown-box-shadow: rgba(15, 33, 51, 0.25) 0px 1px 4px !default;
+$toast-header-border-color: rgb(0, 0, 0, 0) !default;
+$dropdown-box-shadow: rgb(15, 33, 51, 0.25) 0px 1px 4px !default;
 $link-color: $gray-800 !default;
 $form-select-box-shadow: none !default;
 $link-decoration: underline !default;
 $link-hover-color: $gray-800 !default;
 $nav-tabs-link-hover-border-color: $gray-500 $gray-500 $nav-tabs-border-color !default;
-//$nav-tabs-link-active-border-color: $primary $gray-500 $nav-tabs-link-active-bg;
+
 $btn-disabled-opacity: .30 !default;
 $form-feedback-valid-color: $success !default;
 $form-feedback-invalid-color: $danger !default;
@@ -117,7 +116,7 @@ $form-feedback-icon-valid-color: $success !default;
 $form-feedback-icon-invalid-color: $danger !default;
 $enable-shadows: true !default;
 
-//new:
+// new:
 $form-check-input-border: $gray-650 !default;
 $form-check-input-disabled-bg: $gray-300 !default;
 $form-check-label-disabled-color: $gray-650 !default;

@@ -14,6 +14,7 @@ build/
 target
 *.css
 *.css.map
+lint-results.xml
 
 .idea
 .claude
