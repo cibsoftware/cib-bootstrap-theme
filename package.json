@@ -13,7 +13,7 @@
     "build": "sass src/index.scss dist/index.css --load-path=node_modules",
     "watch": "sass src/index.scss dist/index.css --load-path=node_modules --watch",
     "test": "vitest run",
-    "test:unit": "vitest run"
+    "test:unit": "vitest run --reporter=default --reporter=junit --outputFile=target/vitest-reports/TEST-front-end.xml"
   },
   "publishConfig": {
     "access": "public"
