@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "build": "sass src/index.scss dist/index.css --load-path=node_modules",
-    "watch": "sass src/index.scss dist/index.css --load-path=node_modules --watch"
+    "watch": "sass src/index.scss dist/index.css --load-path=node_modules --watch",
+    "test": "vitest run"
   },
   "publishConfig": {
     "access": "public"
@@ -28,7 +29,8 @@
     "bootstrap": "^5.3.0"
   },
   "devDependencies": {
-    "sass": "^1.60.0"
+    "sass": "^1.60.0",
+    "vitest": "^4.1.9"
   },
   "peerDependencies": {
     "bootstrap": "^5.3.0"
