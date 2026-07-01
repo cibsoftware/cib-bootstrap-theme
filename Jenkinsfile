@@ -14,6 +14,9 @@ standardNPMPipeline(
         'SAST': true
     ],
 
+    // Test configuration
+    testResultsPattern: ConstantsInternal.MAVEN_TEST_RESULTS,
+
     // Publish configuration
     npmAllowRepublish: false,
     npmCredentialsId: Constants.CIBSEVEN_NPM_CREDENTIALS_ID,
