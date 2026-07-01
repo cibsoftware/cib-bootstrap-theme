@@ -16,8 +16,6 @@ standardNPMPipeline(
 
     // Test configuration
     testResultsPattern: ConstantsInternal.MAVEN_TEST_RESULTS,
-    coverageCoberturaPattern: 'target/coverage/cobertura-coverage.xml',
-    coverageLcovPattern: 'target/coverage/lcov.info',
 
     // Publish configuration
     npmAllowRepublish: false,
