@@ -11,6 +11,7 @@ Thumbs.db
 # Build Artifacts
 dist/
 build/
+target
 *.css
 *.css.map
 
