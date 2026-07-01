@@ -15,19 +15,19 @@
  *  limitations under the License.
  */
 
-$primary:       #E11E19 !default;
-$secondary:     #4D6278 !default;
-$success:       #00A5A5 !default;
-$info:          #4E7DBC !default;
-$warning:       #D98D00 !default;
-$danger:        #E86462 !default;
-$light:         #F0F4F7 !default;
-$dark:          #0F2133 !default;
-$white:         #FFF !default;
+$primary: #E11E19 !default;
+$secondary: #4D6278 !default;
+$success: #00A5A5 !default;
+$info: #4E7DBC !default;
+$warning: #D98D00 !default;
+$danger: #E86462 !default;
+$light: #F0F4F7 !default;
+$dark: #0F2133 !default;
+$white: #FFF !default;
 
 // Extra brand accent colors
 $blue-highlight: #4395FF !default;
-$petrol:        #069AAD !default; // used for signature
+$petrol: #069AAD !default; // used for signature
 
 // Extra brand accent colors that aren't part of Bootstrap's $theme-colors map,
 // exposed as custom properties instead of generating a full utility class set.

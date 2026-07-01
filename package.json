@@ -13,7 +13,8 @@
     "build": "sass src/index.scss dist/index.css --load-path=node_modules",
     "watch": "sass src/index.scss dist/index.css --load-path=node_modules --watch",
     "test": "vitest run",
-    "test:unit": "vitest run --reporter=default --reporter=junit --outputFile=target/vitest-reports/TEST-front-end.xml"
+    "test:unit": "vitest run --reporter=default --reporter=junit --outputFile=target/vitest-reports/TEST-front-end.xml",
+    "lint": "stylelint \"src/**/*.scss\""
   },
   "publishConfig": {
     "access": "public"
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "sass": "^1.60.0",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard-scss": "^17.0.0",
     "vitest": "^4.1.9"
   },
   "peerDependencies": {

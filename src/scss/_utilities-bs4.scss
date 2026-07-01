@@ -57,7 +57,7 @@ $gray: #c1cedd;
 
 .dropdown-item:focus-visible {
   outline: 2px solid $dark;
-  outline-offset: 0px;
+  outline-offset: 0;
 }
 
 .list-group-item.active {
@@ -101,8 +101,7 @@ $gray: #c1cedd;
 
 
 .custom-select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn-light {
@@ -120,8 +119,8 @@ $gray: #c1cedd;
     border-color: $gray-600;
   }
 
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:not(:disabled, .disabled):active,
+  &:not(:disabled, .disabled).active {
     border-color: $gray-600;
   }
 
@@ -143,7 +142,7 @@ $gray: #c1cedd;
 }
 
 .list-group-item + .list-group-item.active {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .navbar-collapse {
@@ -167,14 +166,14 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .form-control:not(:disabled):hover,
-input:not([type="checkbox"]):not([type="radio"]):not(:disabled):hover,
+input:not([type="checkbox"], [type="radio"], :disabled):hover,
 textarea:not(:disabled):hover,
 select:not(:disabled):hover {
   border-color: $gray-800 !important;
 }
 
 .form-control:not(:disabled):focus,
-input:not([type="checkbox"]):not([type="radio"]):not(:disabled):focus,
+input:not([type="checkbox"], [type="radio"], :disabled):focus,
 textarea:not(:disabled):focus,
 select:not(:disabled):focus {
   border-color: $gray-800 !important;
@@ -184,7 +183,7 @@ select:not(:disabled):focus {
 }
 
 .form-control.is-valid:not(:disabled):focus,
-input.is-valid:not([type="checkbox"]):not([type="radio"]):not(:disabled):focus,
+input.is-valid:not([type="checkbox"], [type="radio"], :disabled):focus,
 textarea.is-valid:not(:disabled):focus {
   border-color: $success !important;
   outline: 2px solid $success !important;
@@ -193,7 +192,7 @@ textarea.is-valid:not(:disabled):focus {
 }
 
 .form-control.is-invalid:not(:disabled):focus,
-input.is-invalid:not([type="checkbox"]):not([type="radio"]):not(:disabled):focus,
+input.is-invalid:not([type="checkbox"], [type="radio"], :disabled):focus,
 textarea.is-invalid:not(:disabled):focus {
   border-color: $danger !important;
   outline: 2px solid $danger !important;
@@ -226,13 +225,13 @@ input[type="radio"]:not(:disabled):focus-visible {
 }
 
 button:not(:disabled):focus,
-.btn:not(a):not(:disabled):focus {
+.btn:not(a, :disabled):focus {
   outline: 0 !important;
   box-shadow: none !important;
 }
 
 button:not(:disabled):focus-visible,
-.btn:not(a):not(:disabled):focus-visible {
+.btn:not(a, :disabled):focus-visible {
   outline: 2px solid $dark !important;
   outline-offset: 2px;
   box-shadow: none !important;
@@ -243,11 +242,13 @@ button:not(:disabled):focus-visible,
 	scrollbar-color: $gray $white;
 	scrollbar-width: thin;
 }
+
 ::-webkit-scrollbar {
 	width: 8px; /* width of the entire scrollbar(vertical) */
 	height: 8px; /* height of the entire scrollbar(horizontal) */
 }
 ::-webkit-scrollbar-track { background: $white; /* color of the tracking area */}
+
 ::-webkit-scrollbar-thumb {
 	background-color: $gray; /* color of the scroll thumb */
 	border-radius: 20px; /* roundness of the scroll thumb */
