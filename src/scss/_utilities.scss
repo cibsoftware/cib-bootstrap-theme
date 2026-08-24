@@ -307,7 +307,7 @@ button:not(:disabled):focus-visible,
 .cib-navbar-utility > .nav-link:hover,
 .cib-navbar-utility > .nav-link:focus,
 .cib-navbar-utility > .nav-link.show {
-  background-color: rgba(13, 110, 253, 0.12);
+  background-color: rgba($blue, 0.12);
   color: var(--bs-secondary-color);
 }
 
@@ -372,7 +372,6 @@ li.cib-dropdown-title > .dropdown-item.active {
 .cib-navbar-chevron-dropdown > .dropdown-menu,
 .cib-navbar-utility-dropdown > .dropdown-menu {
   border: 1px solid var(--bs-border-color);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
   min-width: 14rem;
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
@@ -380,7 +379,6 @@ li.cib-dropdown-title > .dropdown-item.active {
 
 .cib-navbar-utility > .dropdown-menu {
   border: 1px solid var(--bs-border-color);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
   min-width: 12rem;
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
@@ -389,13 +387,16 @@ li.cib-dropdown-title > .dropdown-item.active {
 // BAvatar's variant defaults to bg-primary (the brand red); override back to
 // the account avatar's original blue, which isn't one of the theme's variants
 // (not close enough to $blue-highlight or $info to substitute either without
-// changing how it looks). Bootstrap's bg-primary utility is itself !important
+// changing how it looks). $blue-100/$blue-700 are Bootstrap's own tint/shade
+// of its stock $blue — this theme never overrides that base color, so they
+// stay defined and give the exact blue this avatar used before, without
+// hardcoding hex here. Bootstrap's bg-primary utility is itself !important
 // with the same (single-class) specificity, so this needs a higher-specificity
 // selector to reliably win regardless of CSS load order — a bare
 // `.cib-user-avatar { ... !important }` is not guaranteed to.
 .cib-navbar-utility .cib-user-avatar {
-  background-color: #cfe2ff !important;
-  color: #084298 !important;
+  background-color: $blue-100 !important;
+  color: $blue-700 !important;
 }
 
 // Mobile drawer rows: flat accordion look — a divider above each row, chevron
