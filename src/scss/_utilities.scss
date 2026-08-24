@@ -263,3 +263,229 @@ button:not(:disabled):focus-visible,
     border-bottom-width: 0;
   }
 }
+
+// Navbar & utility dropdowns (CIBHeaderFlow / CibSeven navbar in cibseven-webclient).
+// Lives here rather than in those components' own <style scoped> blocks because
+// BNavItemDropdown/BDropdownItem/BDropdownItemButton hardcode their own internal
+// .nav-link/.dropdown-toggle/.dropdown-menu/.dropdown-item markup — Vue scoped CSS
+// can't reach past that boundary, and CibSevenEE additionally renders these via
+// `extends: CibSeven`, which drops the scope attribute entirely for the whole
+// component (Vue only stamps it from the component's own compiled <style scoped>,
+// which CibSevenEE.vue doesn't have). Global CSS in the shared theme is the only
+// thing both CE and EE reliably see either way.
+.cib-navbar-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--bs-border-color);
+}
+
+.cib-navbar-tool {
+  margin-right: 1rem;
+}
+
+.cib-navbar-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.35rem 0 0 0.35rem;
+}
+
+// Standalone icon buttons (no adjacent chevron to complete the pill) need all four corners rounded.
+.cib-navbar-icon-btn-standalone {
+  border-radius: 0.35rem;
+}
+
+.cib-navbar-icon-btn:hover,
+.cib-navbar-icon-btn:focus,
+.cib-navbar-icon-btn.cib-navbar-control-active,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link:hover,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link:focus,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link.show,
+.cib-navbar-tool .cib-navbar-chevron-dropdown.cib-navbar-control-active > .nav-link,
+.cib-navbar-utility-dropdown > .nav-link:hover,
+.cib-navbar-utility-dropdown > .nav-link:focus,
+.cib-navbar-utility-dropdown > .nav-link.show,
+.cib-navbar-utility > .nav-link:hover,
+.cib-navbar-utility > .nav-link:focus,
+.cib-navbar-utility > .nav-link.show {
+  background-color: rgba(13, 110, 253, 0.12);
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 36px;
+  min-width: 15px;
+  min-height: 36px;
+  padding: 0 10px 0 9px !important;
+  border: 0;
+  border-radius: 0 0.35rem 0.35rem 0;
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-utility-dropdown > .nav-link,
+.cib-navbar-utility > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem;
+  min-height: 36px;
+  border-radius: 0.35rem;
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-utility {
+  margin-left: 0.15rem;
+}
+
+// BNavItemDropdown always adds dropdown-toggle; hide Bootstrap's caret (keep MDI chevron)
+.cib-navbar-chevron-dropdown > .dropdown-toggle::after,
+.cib-navbar-utility-dropdown > .dropdown-toggle::after,
+.cib-navbar-utility > .dropdown-toggle::after {
+  display: none !important;
+  content: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.cib-dropdown-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bs-body-color);
+}
+
+.cib-navbar .cib-dropdown-title {
+  font-size: 1rem;
+}
+
+li.cib-dropdown-title > .dropdown-item,
+li.cib-dropdown-title > .dropdown-item:hover,
+li.cib-dropdown-title > .dropdown-item:focus,
+li.cib-dropdown-title > .dropdown-item.active {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bs-body-color);
+  cursor: pointer;
+}
+
+.cib-navbar-chevron-dropdown > .dropdown-menu,
+.cib-navbar-utility-dropdown > .dropdown-menu {
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+  min-width: 14rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+.cib-navbar-utility > .dropdown-menu {
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+  min-width: 12rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+// BAvatar's variant defaults to bg-primary (the brand red); override back to
+// the account avatar's original blue, which isn't one of the theme's variants
+// (not close enough to $blue-highlight or $info to substitute either without
+// changing how it looks). Bootstrap's bg-primary utility is itself !important
+// with the same (single-class) specificity, so this needs a higher-specificity
+// selector to reliably win regardless of CSS load order — a bare
+// `.cib-user-avatar { ... !important }` is not guaranteed to.
+.cib-navbar-utility .cib-user-avatar {
+  background-color: #cfe2ff !important;
+  color: #084298 !important;
+}
+
+// Mobile drawer rows: flat accordion look — a divider above each row, chevron
+// pinned to the far right (points right when collapsed, down when expanded),
+// no highlight color, and sub-items appear as plain inline rows (instead of a
+// floating card that repeats the row's own title) once expanded. Matches the
+// CIB Navigation mockup.
+@media (max-width: 767.98px) {
+  // The navbar carries px-3 (1rem) side padding, which insets these rows too —
+  // bleed the row (and its divider) back out to the full width, then restore
+  // the same 1rem via the nav-link's own padding so the icon/label still line
+  // up with the header above.
+  .cib-navbar-utility-dropdown,
+  .cib-navbar-utility {
+    border-top: 1px solid var(--bs-border-color);
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link,
+  .cib-navbar-utility > .nav-link {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+  }
+
+  // Title: always bold + dark, regardless of hover/focus/expanded state.
+  // Icon and chevron: always the muted secondary color/weight, never dark or
+  // bold — set directly on each element (not on .nav-link) so no hover/focus/
+  // show state on the row can change them via inheritance.
+  .cib-navbar-utility-dropdown > .nav-link .cib-mobile-row-title {
+    font-weight: 600 !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link .mdi,
+  .cib-navbar-utility > .nav-link .mdi {
+    font-weight: 400 !important;
+    color: var(--bs-secondary-color) !important;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link:hover,
+  .cib-navbar-utility-dropdown > .nav-link:focus,
+  .cib-navbar-utility-dropdown > .nav-link.show,
+  .cib-navbar-utility > .nav-link:hover,
+  .cib-navbar-utility > .nav-link:focus,
+  .cib-navbar-utility > .nav-link.show {
+    background-color: transparent;
+    color: var(--bs-secondary-color);
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link .mdi-chevron-down,
+  .cib-navbar-utility > .nav-link .mdi-chevron-down {
+    transition: transform 0.15s ease;
+    transform: rotate(-90deg);
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link.show .mdi-chevron-down,
+  .cib-navbar-utility > .nav-link.show .mdi-chevron-down {
+    transform: rotate(0deg);
+  }
+
+  .cib-navbar-utility-dropdown > .dropdown-menu,
+  .cib-navbar-utility > .dropdown-menu {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--bs-border-color-translucent);
+    box-shadow: none;
+  }
+
+  // Indent item text only — the divider <hr>s are siblings of these items,
+  // so they're untouched and still span the full row width.
+  .cib-navbar-utility-dropdown > .dropdown-menu .dropdown-item,
+  .cib-navbar-utility > .dropdown-menu .dropdown-item {
+    padding-left: 2.75rem !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  // The toggle row already shows the title — don't repeat it inside
+  .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title,
+  .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title + hr.dropdown-divider,
+  .cib-navbar-utility > .dropdown-menu > li.cib-dropdown-title,
+  .cib-navbar-utility > .dropdown-menu > li.cib-dropdown-title + hr.dropdown-divider {
+    display: none;
+  }
+}
