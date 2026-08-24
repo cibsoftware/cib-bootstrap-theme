@@ -264,15 +264,10 @@ button:not(:disabled):focus-visible,
   }
 }
 
-// Navbar & utility dropdowns (CIBHeaderFlow / CibSeven navbar in cibseven-webclient).
-// Lives here rather than in those components' own <style scoped> blocks because
-// BNavItemDropdown/BDropdownItem/BDropdownItemButton hardcode their own internal
-// .nav-link/.dropdown-toggle/.dropdown-menu/.dropdown-item markup — Vue scoped CSS
-// can't reach past that boundary, and CibSevenEE additionally renders these via
-// `extends: CibSeven`, which drops the scope attribute entirely for the whole
-// component (Vue only stamps it from the component's own compiled <style scoped>,
-// which CibSevenEE.vue doesn't have). Global CSS in the shared theme is the only
-// thing both CE and EE reliably see either way.
+// Navbar & utility dropdowns (CIBHeaderFlow / CibSeven). Lives here, not in
+// <style scoped>, because BNavItemDropdown hardcodes its own markup and
+// CibSevenEE's `extends: CibSeven` drops scoped attributes entirely — only
+// global theme CSS reliably reaches both CE and EE.
 .cib-navbar-divider {
   width: 1px;
   height: 28px;
@@ -384,31 +379,15 @@ li.cib-dropdown-title > .dropdown-item.active {
   padding-bottom: 0.5rem;
 }
 
-// BAvatar's variant defaults to bg-primary (the brand red); override back to
-// the account avatar's original blue, which isn't one of the theme's variants
-// (not close enough to $blue-highlight or $info to substitute either without
-// changing how it looks). $blue-100/$blue-700 are Bootstrap's own tint/shade
-// of its stock $blue — this theme never overrides that base color, so they
-// stay defined and give the exact blue this avatar used before, without
-// hardcoding hex here. Bootstrap's bg-primary utility is itself !important
-// with the same (single-class) specificity, so this needs a higher-specificity
-// selector to reliably win regardless of CSS load order — a bare
-// `.cib-user-avatar { ... !important }` is not guaranteed to.
+// Overrides BAvatar's primary (red) with blue.
 .cib-navbar-utility .cib-user-avatar {
   background-color: $blue-100 !important;
   color: $blue-700 !important;
 }
 
-// Mobile drawer rows: flat accordion look — a divider above each row, chevron
-// pinned to the far right (points right when collapsed, down when expanded),
-// no highlight color, and sub-items appear as plain inline rows (instead of a
-// floating card that repeats the row's own title) once expanded. Matches the
-// CIB Navigation mockup.
+// Mobile drawer rows: flat accordion look — divider per row, chevron on the
+// right, sub-items as plain inline rows instead of a floating card.
 @media (max-width: 767.98px) {
-  // The navbar carries px-3 (1rem) side padding, which insets these rows too —
-  // bleed the row (and its divider) back out to the full width, then restore
-  // the same 1rem via the nav-link's own padding so the icon/label still line
-  // up with the header above.
   .cib-navbar-utility-dropdown,
   .cib-navbar-utility {
     border-top: 1px solid var(--bs-border-color);
@@ -424,10 +403,6 @@ li.cib-dropdown-title > .dropdown-item.active {
     padding: 0.625rem 1rem;
   }
 
-  // Title: always bold + dark, regardless of hover/focus/expanded state.
-  // Icon and chevron: always the muted secondary color/weight, never dark or
-  // bold — set directly on each element (not on .nav-link) so no hover/focus/
-  // show state on the row can change them via inheritance.
   .cib-navbar-utility-dropdown > .nav-link .cib-mobile-row-title {
     font-weight: 600 !important;
     color: var(--bs-body-color) !important;
@@ -473,8 +448,6 @@ li.cib-dropdown-title > .dropdown-item.active {
     box-shadow: none;
   }
 
-  // Indent item text only — the divider <hr>s are siblings of these items,
-  // so they're untouched and still span the full row width.
   .cib-navbar-utility-dropdown > .dropdown-menu .dropdown-item,
   .cib-navbar-utility > .dropdown-menu .dropdown-item {
     padding-left: 2.75rem !important;
@@ -482,7 +455,6 @@ li.cib-dropdown-title > .dropdown-item.active {
     padding-bottom: 0.75rem;
   }
 
-  // The toggle row already shows the title — don't repeat it inside
   .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title,
   .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title + hr.dropdown-divider,
   .cib-navbar-utility > .dropdown-menu > li.cib-dropdown-title,
