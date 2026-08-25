@@ -20,6 +20,6 @@ standardNPMPipeline(
     // Publish configuration
     npmAllowRepublish: false,
     npmCredentialsId: Constants.NPM_CREDENTIALS_ID,
-    npmDevRegistry: Constants.CIBSEVEN_NPM_REGISTRY_DEV_URL,
-    npmReleaseRegistry: Constants.CIBSEVEN_NPM_REGISTRY_RELEASE_URL
+    npmDevRegistry: Constants.NPM_REGISTRY_DEV_URL,
+    npmReleaseRegistry: Constants.NPM_REGISTRY_RELEASE_URL
 )
