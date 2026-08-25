@@ -263,3 +263,202 @@ button:not(:disabled):focus-visible,
     border-bottom-width: 0;
   }
 }
+
+// Navbar & utility dropdowns (CIBHeaderFlow / CibSeven). Lives here, not in
+// <style scoped>, because BNavItemDropdown hardcodes its own markup and
+// CibSevenEE's `extends: CibSeven` drops scoped attributes entirely — only
+// global theme CSS reliably reaches both CE and EE.
+.cib-navbar-divider {
+  width: 1px;
+  height: 28px;
+  background-color: var(--bs-border-color);
+}
+
+.cib-navbar-tool {
+  margin-right: 1rem;
+}
+
+.cib-navbar-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 0.35rem 0 0 0.35rem;
+}
+
+// Standalone icon buttons (no adjacent chevron to complete the pill) need all four corners rounded.
+.cib-navbar-icon-btn-standalone {
+  border-radius: 0.35rem;
+}
+
+.cib-navbar-icon-btn:hover,
+.cib-navbar-icon-btn:focus,
+.cib-navbar-icon-btn.cib-navbar-control-active,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link:hover,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link:focus,
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link.show,
+.cib-navbar-tool .cib-navbar-chevron-dropdown.cib-navbar-control-active > .nav-link,
+.cib-navbar-utility-dropdown > .nav-link:hover,
+.cib-navbar-utility-dropdown > .nav-link:focus,
+.cib-navbar-utility-dropdown > .nav-link.show,
+.cib-navbar-utility > .nav-link:hover,
+.cib-navbar-utility > .nav-link:focus,
+.cib-navbar-utility > .nav-link.show {
+  background-color: rgba($blue, 0.12);
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-tool .cib-navbar-chevron-dropdown > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 36px;
+  min-width: 15px;
+  min-height: 36px;
+  padding: 0 10px 0 9px !important;
+  border: 0;
+  border-radius: 0 0.35rem 0.35rem 0;
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-utility-dropdown > .nav-link,
+.cib-navbar-utility > .nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem;
+  min-height: 36px;
+  border-radius: 0.35rem;
+  color: var(--bs-secondary-color);
+}
+
+.cib-navbar-utility {
+  margin-left: 0.15rem;
+}
+
+// BNavItemDropdown always adds dropdown-toggle; hide Bootstrap's caret (keep MDI chevron)
+.cib-navbar-chevron-dropdown > .dropdown-toggle::after,
+.cib-navbar-utility-dropdown > .dropdown-toggle::after,
+.cib-navbar-utility > .dropdown-toggle::after {
+  display: none !important;
+  content: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.cib-dropdown-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bs-body-color);
+}
+
+.cib-navbar .cib-dropdown-title {
+  font-size: 1rem;
+}
+
+li.cib-dropdown-title > .dropdown-item,
+li.cib-dropdown-title > .dropdown-item:hover,
+li.cib-dropdown-title > .dropdown-item:focus,
+li.cib-dropdown-title > .dropdown-item.active {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--bs-body-color);
+  cursor: pointer;
+}
+
+.cib-navbar-chevron-dropdown > .dropdown-menu,
+.cib-navbar-utility-dropdown > .dropdown-menu {
+  border: 1px solid var(--bs-border-color);
+  min-width: 14rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+.cib-navbar-utility > .dropdown-menu {
+  border: 1px solid var(--bs-border-color);
+  min-width: 12rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+}
+
+// Overrides BAvatar's primary (red) with blue.
+.cib-navbar-utility .cib-user-avatar {
+  background-color: $blue-100 !important;
+  color: $blue-700 !important;
+}
+
+// Mobile drawer rows: flat accordion look — divider per row, chevron on the
+// right, sub-items as plain inline rows instead of a floating card.
+@media (max-width: 767.98px) {
+  .cib-navbar-utility-dropdown,
+  .cib-navbar-utility {
+    border-top: 1px solid var(--bs-border-color);
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link,
+  .cib-navbar-utility > .nav-link {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.625rem 1rem;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link .cib-mobile-row-title {
+    font-weight: 600 !important;
+    color: var(--bs-body-color) !important;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link .mdi,
+  .cib-navbar-utility > .nav-link .mdi {
+    font-weight: 400 !important;
+    color: var(--bs-secondary-color) !important;
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link:hover,
+  .cib-navbar-utility-dropdown > .nav-link:focus,
+  .cib-navbar-utility-dropdown > .nav-link.show,
+  .cib-navbar-utility > .nav-link:hover,
+  .cib-navbar-utility > .nav-link:focus,
+  .cib-navbar-utility > .nav-link.show {
+    background-color: transparent;
+    color: var(--bs-secondary-color);
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link .mdi-chevron-down,
+  .cib-navbar-utility > .nav-link .mdi-chevron-down {
+    transition: transform 0.15s ease;
+    transform: rotate(-90deg);
+  }
+
+  .cib-navbar-utility-dropdown > .nav-link.show .mdi-chevron-down,
+  .cib-navbar-utility > .nav-link.show .mdi-chevron-down {
+    transform: rotate(0deg);
+  }
+
+  .cib-navbar-utility-dropdown > .dropdown-menu,
+  .cib-navbar-utility > .dropdown-menu {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--bs-border-color-translucent);
+    box-shadow: none;
+  }
+
+  .cib-navbar-utility-dropdown > .dropdown-menu .dropdown-item,
+  .cib-navbar-utility > .dropdown-menu .dropdown-item {
+    padding-left: 2.75rem !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title,
+  .cib-navbar-utility-dropdown > .dropdown-menu > li.cib-dropdown-title + hr.dropdown-divider,
+  .cib-navbar-utility > .dropdown-menu > li.cib-dropdown-title,
+  .cib-navbar-utility > .dropdown-menu > li.cib-dropdown-title + hr.dropdown-divider {
+    display: none;
+  }
+}
