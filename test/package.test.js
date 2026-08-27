@@ -23,10 +23,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
 
 describe('package-lock.json', () => {
-  it('should resolve to the private registry (nexus.cib.de) only', () => {
+  it('should resolve to the private registry (artifacts.cibseven.org) only', () => {
     const packageLockPath = path.join(rootDir, 'package-lock.json');
     const packageLockContent = readFileSync(packageLockPath, 'utf-8');
-    const hasPrivateRegistry = packageLockContent.includes('https://nexus.cib.de');
+    const hasPrivateRegistry = packageLockContent.includes('https://artifacts.cibseven.org');
     const hasNpmRegistry = packageLockContent.includes('https://registry.npmjs.org');
     expect(hasPrivateRegistry).toBe(true);
     expect(hasNpmRegistry).toBe(false);
