@@ -387,7 +387,7 @@ li.cib-dropdown-title > .dropdown-item.active {
 
 // Mobile drawer rows: flat accordion look — divider per row, chevron on the
 // right, sub-items as plain inline rows instead of a floating card.
-@media (max-width: 767.98px) {
+@media (max-width: 767px) {
   .cib-navbar-utility-dropdown,
   .cib-navbar-utility {
     border-top: 1px solid var(--bs-border-color);
