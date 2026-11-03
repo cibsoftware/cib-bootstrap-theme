@@ -113,15 +113,28 @@ $gray: #c1cedd;
   --bs-btn-hover-border-color: #{$gray-600};
   --bs-btn-active-border-color: #{$gray-600};
   --bs-btn-disabled-border-color: #{$gray-600};
+
+  // pressed / selected state; focus is shown by the outline below instead of a box-shadow
+  --bs-btn-active-bg: #{$gray-500};
+  --bs-btn-focus-box-shadow: none;
+}
+
+// keyboard focus keeps the default background so a clicked button does not look pressed
+.btn-light:focus-visible {
+  background-color: $btn-light-bg;
+  outline: 2px solid $dark;
+  outline-offset: 2px;
+}
+
+// a .btn-check toggle keeps focus on its hidden input, so its label shows the outline;
+// no background here, a checked label must keep its pressed colour
+.btn-check:focus-visible + .btn-light {
+  outline: 2px solid $dark;
+  outline-offset: 2px;
 }
 
 .btn-light:hover {
   background-color: $btn-light-hover-bg;
-}
-
-.btn-light:focus,
-.btn-light:focus-visible {
-  background-color: $gray-500;
 }
 
 .btn.border-0 {
