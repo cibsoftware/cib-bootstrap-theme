@@ -126,6 +126,13 @@ $gray: #c1cedd;
   outline-offset: 2px;
 }
 
+// a .btn-check toggle keeps focus on its hidden input, so its label shows the outline;
+// no background here, a checked label must keep its pressed colour
+.btn-check:focus-visible + .btn-light {
+  outline: 2px solid $dark;
+  outline-offset: 2px;
+}
+
 .btn-light:hover {
   background-color: $btn-light-hover-bg;
 }
