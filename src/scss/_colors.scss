@@ -29,9 +29,14 @@ $white: #FFF !default;
 $blue-highlight: #4395FF !default;
 $petrol: #069AAD !default; // used for signature
 
+// CIB gray between 600 and 700 for non-decorative elements (contrast >= 3:1),
+// e.g. input borders. Not part of Bootstrap's $grays map.
+$gray-650: #8092A6 !default;
+
 // Extra brand accent colors that aren't part of Bootstrap's $theme-colors map,
 // exposed as custom properties instead of generating a full utility class set.
 :root {
   --bs-blue-highlight: #{$blue-highlight};
   --bs-petrol: #{$petrol};
+  --bs-gray-650: #{$gray-650};
 }
